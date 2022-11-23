@@ -1,6 +1,8 @@
-function ProfileCard(){
+function ProfileCard({title, handle}){
   return (
-    <div>Personal Assitant</div>
+    <div>
+      Personal Assistant!
+    </div>
   )
 }
 
