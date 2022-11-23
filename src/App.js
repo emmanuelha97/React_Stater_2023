@@ -1,16 +1,14 @@
-import ProfileCard from './ProfileCard'
-import AlexaImage from './images/alexa.png'
-
+import AnimalShow from './AnimalShow'
 
 function App() {
   return (
     <div>
-      <div>Personal Digital Assistants</div>
-      <ProfileCard title="Alexa" handle="@amazon" />
-      <ProfileCard title="Cortana" handle="@microsoft" />
-      <ProfileCard title="Siri" handle="@apple" />
+      <div>Show the animal lsit</div>
+      <AnimalShow />
+      <AnimalShow />
+      <AnimalShow />
     </div>
   );
 }
 
-export default App;
+export default AnimalShow
