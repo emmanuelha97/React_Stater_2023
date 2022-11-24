@@ -1,12 +1,7 @@
-import ProfileCard from './ProfileCard'
-
 function App() {
   return (
     <div>
-      <div>Personal Digital Assitants</div>
-      <ProfileCard/>
-      <ProfileCard/>
-      <ProfileCard/>
+      Hello World. I am React skeleton
     </div>
   );
 }
