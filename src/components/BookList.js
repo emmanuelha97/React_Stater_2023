@@ -6,7 +6,7 @@ function BookList({ books, onDelete, onEdit }) {
   })
 
   return (
-    <div className='books-list'>{renderedBooks}</div>
+    <div className='book-list'>{renderedBooks}</div>
   )
 }
 

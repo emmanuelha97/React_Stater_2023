@@ -1,10 +1,21 @@
-import {useState} from "react";
+//noinspection JSIgnoredPromiseFromCall
+
+import {useState, useEffect} from "react";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
 import axios from "axios";
 
 function App() {
   const [books, setBooks] = useState([])
+
+  const fetchBooks = async () => {
+    const response = await axios.get('http://127.0.0.1:5000/books');
+    setBooks(response.data.books)
+  };
+
+  useEffect(()=> {
+    fetchBooks()
+  }, [])
 
   const createBook = async (title) => {
 
@@ -18,13 +29,14 @@ function App() {
     setBooks(updatedBooks)
   }
 
-  const editBookById = (id, newTitle) => {
+  const editBookById = async (id, newTitle) => {
+    const response = await axios.put(`http://127.0.0.1:5000/books/${id}`, {
+      title: newTitle
+    })
+    console.log(response)
     const updatedBooks = books.map((book) => {
       if (book.id === id){
-        return {
-          ...book,
-          title: newTitle
-        }
+        return {...book, ...response.data }
       }
       return book;
     })
@@ -32,8 +44,9 @@ function App() {
     setBooks(updatedBooks)
   }
 
-  const deleteBookById = (bookId) => {
-    console.log('delete clicked for ', bookId)
+  const deleteBookById = async (bookId) => {
+    await axios.delete(`http://127.0.0.1:5000/books/${bookId}`);
+
     const updatedBooks = books.filter((book) => {
       return book.id !== bookId
     })
