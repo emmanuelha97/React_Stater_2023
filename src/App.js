@@ -33,7 +33,6 @@ function App() {
     const response = await axios.put(`http://127.0.0.1:5000/books/${id}`, {
       title: newTitle
     })
-    console.log(response)
     const updatedBooks = books.map((book) => {
       if (book.id === id){
         return {...book, ...response.data }
